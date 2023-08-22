@@ -1,0 +1,685 @@
+openapi: 3.0.0
+info:
+  version: "1.0.0"
+  title: "Technical Test"
+  license:
+    name: MIT
+servers:
+  - url: "http://0.0.0.0:80/api"
+  - url: "http://technical-test-back-end.test/api"
+paths:
+  /farms:
+    get:
+      summary: "Sample endpoint: Returns data for all farms"
+      operationId: farms.index
+      tags:
+        - farms
+      responses:
+        "200":
+          description: "Sample response: Data for all farms"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Farms"
+  /farms/{farmID}:
+    parameters:
+      - name: farmID
+        in: path
+        required: true
+        schema:
+          type: integer
+    get:
+      summary: "Sample endpoint: Returns data for farm with ID :farmID"
+      operationId: farms.show
+      tags:
+        - farms
+      responses:
+        "200":
+          description: "Sample response: Data for farm with ID :farmID"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Farm"
+  /farms/{farmID}/turbines:
+    parameters:
+      - name: farmID
+        in: path
+        required: true
+        schema:
+          type: integer
+    get:
+      summary: "Sample endpoint: Returns data for all turbines belonging to farm with ID :farmID"
+      operationId: farms.turbines.index
+      tags:
+        - farms
+        - turbines
+      responses:
+        "200":
+          description: "Sample response: Data for all turbines belonging to farm with ID :farmID"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Turbines"
+  /farms/{farmID}/turbines/{turbineID}:
+    parameters:
+      - name: farmID
+        in: path
+        required: true
+        schema:
+          type: integer
+      - name: turbineID
+        in: path
+        required: true
+        schema:
+          type: integer
+    get:
+      summary: "Sample endpoint: Returns data for turbine with ID :turbineID belonging to farm with ID :farmID"
+      operationId: farms.turbines.show
+      tags:
+        - farms
+        - turbines
+      responses:
+        "200":
+          description: "Sample response: Data for turbine with ID :turbineID belonging to farm with ID :farmID"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Turbine"
+  /turbines:
+    get:
+      summary: "Sample endpoint: Returns data for all turbines"
+      operationId: farms.index
+      tags:
+        - turbines
+      responses:
+        "200":
+          description: "Sample response: Data for all turbines"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Turbines"
+  /turbines/{turbineID}:
+    parameters:
+      - name: turbineID
+        in: path
+        required: true
+        schema:
+          type: integer
+    get:
+      summary: "Sample endpoint: Returns data for turbine with ID :turbineID"
+      operationId: farms.show
+      tags:
+        - turbines
+      responses:
+        "200":
+          description: "Sample response: Data for turbine with ID :turbineID"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Turbine"
+  /turbines/{turbineID}/components:
+    parameters:
+      - name: turbineID
+        in: path
+        required: true
+        schema:
+          type: integer
+    get:
+      summary: "Sample endpoint: Returns data for all components belonging to turbine with ID :turbineID"
+      operationId: turbines.components.index
+      tags:
+        - turbines
+        - components
+      responses:
+        "200":
+          description: "Sample response: Data for all components belonging to turbine with ID :turbineID"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Components"
+  /turbines/{turbineID}/components/{componentID}:
+    parameters:
+      - name: turbineID
+        in: path
+        required: true
+        schema:
+          type: integer
+      - name: componentID
+        in: path
+        required: true
+        schema:
+          type: integer
+    get:
+      summary: "Sample endpoint: Returns data for component with ID :componentID belonging to turbine with ID :turbineID"
+      operationId: turbines.components.show
+      tags:
+        - turbines
+        - components
+      responses:
+        "200":
+          description: "Sample response: Data for component with ID :componentID belonging to turbine with ID :turbineID"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Component"
+  /turbines/{turbineID}/inspections:
+    parameters:
+      - name: turbineID
+        in: path
+        required: true
+        schema:
+          type: integer
+    get:
+      summary: "Sample endpoint: Returns data for all inspections belonging to turbine with ID :turbineID"
+      operationId: turbines.components.index
+      tags:
+        - turbines
+        - inspections
+      responses:
+        "200":
+          description: "Sample response: Data for all inspections belonging to turbine with ID :turbineID"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Inspections"
+  /turbines/{turbineID}/inspections/{inspectionID}:
+    parameters:
+      - name: turbineID
+        in: path
+        required: true
+        schema:
+          type: integer
+      - name: inspectionID
+        in: path
+        required: true
+        schema:
+          type: integer
+    get:
+      summary: "Sample endpoint: Returns data for inspection with ID :inspectionID belonging to turbine with ID :turbineID"
+      operationId: turbines.components.show
+      tags:
+        - turbines
+        - components
+      responses:
+        "200":
+          description: "Sample response: Data for inspection with ID :inspectionID belonging to turbine with ID :turbineID"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Inspection"
+  /components:
+    get:
+      summary: "Sample endpoint: Returns data for all components"
+      operationId: components.index
+      tags:
+        - components
+      responses:
+        "200":
+          description: "Sample response: Data for all components"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Components"
+  /components/{componentID}:
+    parameters:
+      - name: componentID
+        in: path
+        required: true
+        schema:
+          type: integer
+    get:
+      summary: "Sample endpoint: Returns data for component with ID :componentID"
+      operationId: components.show
+      tags:
+        - components
+      responses:
+        "200":
+          description: "Sample response: Data for component with ID :componentID"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Component"
+  /components/{componentID}/grades:
+    parameters:
+      - name: componentID
+        in: path
+        required: true
+        schema:
+          type: integer
+    get:
+      summary: "Sample endpoint: Returns data for all grades belonging to component with ID :componentID"
+      operationId: components.grades.index
+      tags:
+        - components
+        - grades
+      responses:
+        "200":
+          description: "Sample response: Data for all grades belonging to component with ID :componentID"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Grades"
+  /components/{componentID}/grades/{gradeID}:
+    parameters:
+      - name: componentID
+        in: path
+        required: true
+        schema:
+          type: integer
+      - name: gradeID
+        in: path
+        required: true
+        schema:
+          type: integer
+    get:
+      summary: "Sample endpoint: Returns data for grade with ID :gradeID belonging to component with ID :componentID"
+      operationId: components.grades.show
+      tags:
+        - components
+        - grades
+      responses:
+        "200":
+          description: "Sample response: Data for grade with ID :gradeID belonging to component with ID :componentID"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Grade"
+  /inspections:
+    get:
+      summary: "Sample endpoint: Returns data for all inspections"
+      operationId: inspections.index
+      tags:
+        - inspections
+      responses:
+        "200":
+          description: "Sample response: Data for all inspections"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Inspections"
+  /inspections/{inspectionID}:
+    parameters:
+      - name: inspectionID
+        in: path
+        required: true
+        schema:
+          type: integer
+    get:
+      summary: "Sample endpoint: Returns data for inspection with ID :inspectionID"
+      operationId: inspections.show
+      tags:
+        - inspections
+      responses:
+        "200":
+          description: "Sample response: Data for inspection with ID :inspectionID"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Inspection"
+  /inspections/{inspectionID}/grades:
+    parameters:
+      - name: inspectionID
+        in: path
+        required: true
+        schema:
+          type: integer
+    get:
+      summary: "Sample endpoint: Returns data for all grades belonging to inspection with ID :inspectionID"
+      operationId: inspections.grades.index
+      tags:
+        - inspections
+        - grades
+      responses:
+        "200":
+          description: "Sample response: Data for all grades belonging to inspection with ID :inspectionID"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Grades"
+  /inspections/{inspectionID}/grades/{gradeID}:
+    parameters:
+      - name: inspectionID
+        in: path
+        required: true
+        schema:
+          type: integer
+      - name: gradeID
+        in: path
+        required: true
+        schema:
+          type: integer
+    get:
+      summary: "Sample endpoint: Returns data for grade with ID :gradeID belonging to inspection with ID :inspectionID"
+      operationId: inspections.grades.show
+      tags:
+        - inspections
+        - grades
+      responses:
+        "200":
+          description: "Sample response: Data for grade with ID :gradeID belonging to inspection with ID :inspectionID"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Grade"
+  /grades:
+    get:
+      summary: "Sample endpoint: Returns data for all grades"
+      operationId: grades.index
+      tags:
+        - grades
+      responses:
+        "200":
+          description: "Sample response: Data for all grades"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Grades"
+  /grades/{gradeID}:
+    parameters:
+      - name: gradeID
+        in: path
+        required: true
+        schema:
+          type: integer
+    get:
+      summary: "Sample endpoint: Returns data for grade with ID :gradeID"
+      operationId: grades.show
+      tags:
+        - grades
+      responses:
+        "200":
+          description: "Sample response: Data for grade with ID :gradeID"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Grade"
+  /component-types:
+    get:
+      summary: "Sample endpoint: Returns data for all component-types"
+      operationId: component-types.index
+      tags:
+        - component-types
+      responses:
+        "200":
+          description: "Sample response: Data for all component-types"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ComponentTypes"
+  /component-types/{componentType}:
+    parameters:
+      - name: componentType
+        in: path
+        required: true
+        schema:
+          type: integer
+    get:
+      summary: "Sample endpoint: Returns data for component-type with ID :componentType"
+      operationId: component-types.show
+      tags:
+        - component-types
+      responses:
+        "200":
+          description: "Sample response: Data for component-type with ID :componentType"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ComponentType"
+  /grade-types:
+    get:
+      summary: "Sample endpoint: Returns data for all grade-types"
+      operationId: grade-types.index
+      tags:
+        - grade-types
+      responses:
+        "200":
+          description: "Sample response: Data for all grade-types"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/GradeTypes"
+  /grade-types/{gradeType}:
+    parameters:
+      - name: gradeType
+        in: path
+        required: true
+        schema:
+          type: integer
+    get:
+      summary: "Sample endpoint: Returns data for grade-type with ID :gradeType"
+      operationId: grade-types.show
+      tags:
+        - grade-types
+      responses:
+        "200":
+          description: "Sample response: Data for grade-type with ID :gradeType"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/GradeType"
+
+components:
+  schemas:
+    Farm:
+      type: object
+      required:
+        - id
+        - name
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+    Farms:
+      type: object
+      required:
+        - data
+      properties:
+        data:
+          type: array
+          items:
+            $ref: "#/components/schemas/Farm"
+    Turbine:
+      type: object
+      required:
+        - id
+        - name
+        - farm_id
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        farm_id:
+          type: integer
+          format: int64
+        lat:
+          type: number
+          format: double
+        lng:
+          type: number
+          format: double
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+    Turbines:
+      type: object
+      required:
+        - data
+      properties:
+        data:
+          type: array
+          items:
+            $ref: "#/components/schemas/Turbine"
+    Component:
+      type: object
+      required:
+        - id
+        - component_type_id
+        - turbine_id
+      properties:
+        id:
+          type: integer
+          format: int64
+        component_type_id:
+          type: integer
+          format: int64
+        turbine_id:
+          type: integer
+          format: int64
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+    Components:
+      type: object
+      required:
+        - data
+      properties:
+        data:
+          type: array
+          items:
+            $ref: "#/components/schemas/Component"
+    Inspection:
+      type: object
+      required:
+        - id
+        - turbine_id
+        - inspected_at
+      properties:
+        id:
+          type: integer
+          format: int64
+        turbine_id:
+          type: integer
+          format: int64
+        inspected_at:
+          type: string
+          format: date-time
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+    Inspections:
+      type: object
+      required:
+        - data
+      properties:
+        data:
+          type: array
+          items:
+            $ref: "#/components/schemas/Inspection"
+    Grade:
+      type: object
+      required:
+        - id
+        - inspection_id
+        - component_id
+        - grade_type_id
+      properties:
+        id:
+          type: integer
+          format: int64
+        inspection_id:
+          type: integer
+          format: int64
+        component_id:
+          type: integer
+          format: int64
+        grade_type_id:
+          type: integer
+          format: int64
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+    Grades:
+      type: object
+      required:
+        - data
+      properties:
+        data:
+          type: array
+          items:
+            $ref: "#/components/schemas/Grade"
+    ComponentType:
+      type: object
+      required:
+        - id
+        - name
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+    ComponentTypes:
+      type: object
+      required:
+        - data
+      properties:
+        data:
+          type: array
+          items:
+            $ref: "#/components/schemas/ComponentType"
+    GradeType:
+      type: object
+      required:
+        - id
+        - name
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+    GradeTypes:
+      type: object
+      required:
+        - data
+      properties:
+        data:
+          type: array
+          items:
+            $ref: "#/components/schemas/GradeType"
+
+    Error:
+      type: object
+      required:
+        - code
+        - message
+      properties:
+        code:
+          type: integer
+          format: int32
+        message:
+          type: string
